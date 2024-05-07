@@ -1,5 +1,7 @@
 <?php
 
+require_once "conectaBD.php";
+
 class Pessoa{
 
   public $name;
