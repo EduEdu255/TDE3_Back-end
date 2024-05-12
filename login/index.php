@@ -31,26 +31,5 @@
     else{
         $error = "Usuário ou senha incorreta";
     }
-?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="estilo.css">
-</head>
-<body>
-    <h1>Login</h1>
-    <form method="POST" action="index.php">
-        email: <input type="text" name="email" require><br>
-        senha: <input type="password" name="password" require><br>
-
-        <input type="submit" value="Logar">
-    </form>
-
-    <br>
-    <a href="cadastrar.php">Ainda não é cadastrado</a>
-</body>
-</html>
+    include "login.html";
+    ?>
