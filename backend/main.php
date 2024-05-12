@@ -2,12 +2,14 @@
 
 require_once "conectaBD.php";
 
+;;
+
 class Pessoa{
 
   public $name;
   public $age;
   public $CPF;
-
+ 
   public function __construct($name,$age,$CPF){
     $this->name = $name;
     $this->age = $age;
