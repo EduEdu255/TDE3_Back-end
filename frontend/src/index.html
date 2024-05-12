@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -8,20 +11,20 @@
     <title>Login</title>
 </head>
 <body>
-    <form class="login">
+    <form class="login" method="post" action="/backend/login.php">
         <img src="/frontend/src/components/MedGPT_Logo.svg" alt="">
         <div class="email flex">
             <label for="email">Email</label>
-            <input type="email" name="" id="email" placeholder="Digite seu email" >
+            <input type="email" name="email" id="email" placeholder="Digite seu email" >
         </div>
         <div>
             <label for="senha">Senha</label>
-            <input type="password" name="" id="senha" placeholder="Digite sua senha">
+            <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
         </div>
         <p>Não tem uma conta? Aperte aqui para <a href="/frontend/src/pages/Criar_Conta.html">criar agora.</a></p>
         
         <a href="Info_Paciente.html">
-            <button type="button">Enviaar</button>
+            <button type="submit">Enviar</button>
         </a>
     </form>
 </body>
