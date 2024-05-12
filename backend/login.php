@@ -1,31 +1,8 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
 
-$dados = $_POST;
-
-header("Location:devolver.php");
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<div>email</div>
-    <p><?php
-        echo $dados["email"];
-        
-    ?>    
-    </p>
-    <div>senha</div>
-    <p>
-        <?php
-           echo $dados["senha"];
-        ?>
-    </p>
-    
-</body>
-</html>
+    echo "Email: ". $email . "<br>";
+    echo "Senha: ". $senha;
+ }
