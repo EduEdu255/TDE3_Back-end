@@ -1,7 +1,39 @@
 <?php
-    session_start();
+    // if (session_status() != PHP_SESSION_ACTIVE) {
+    //     session_start();
+    // }
     require_once "config.php";
 
+    // Verifica se a requisição é do tipo POST
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Recupera os dados do formulário
+        $nome = $_POST["nome"];
+        $cpf = $_POST["cpf"];
+        $data = $_POST["data"];
+
+        // Prepara a instrução SQL para inserir os dados na tabela 'paciente'
+        $sql = "INSERT INTO paciente (nome, cpf, data_nasc) VALUES (?, ?, ?)";
+
+        // Prepara o statement
+        $stmt = $conn->prepare($sql);
+
+        // Faz o bind dos parâmetros
+        $stmt->bind_param("sss", $nome, $cpf, $data);
+
+        // Executa a instrução SQL
+        if($stmt->execute()) {
+            // Redireciona para a próxima página
+            header("Location: chat.php");
+            exit;
+        } else {
+            // Em caso de erro, exibe uma mensagem de erro
+            echo "Erro: " . $sql . "<br>" . $conn->error;
+        }
+
+        // Fecha o statement
+        $stmt->close();
+    }
+    
        //teste
     //    $sql = "SELECT nome FROM users WHERE id = 1"; // Supondo que o nome está na tabela usuarios e você deseja o nome do usuário com ID 1
 
@@ -40,4 +72,5 @@
     }
     include "site.html"; 
     
+
  
