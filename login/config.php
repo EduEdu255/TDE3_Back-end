@@ -1,11 +1,10 @@
 <?php
     //Banco de dados
     session_start();
-    //é um usuario meu no Mysqladmin
-    //agente vai trocar por um localgost aberto depois
+    
     $servername = "localhost";
-    $username = "julio";
-    $password = "123456";
+    $username = "root";
+    $password = "";
     $dbname = "login";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
