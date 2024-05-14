@@ -102,8 +102,8 @@ if ($result && $result->num_rows > 0) {
 </head>
 <body>
     <div class="base">
-        <img src="components/Big_Logo_MedGPT.svg" alt="">
         <div class="center">
+            <img src="components/Big_Logo_MedGPT.svg" alt="">
             <h2><?php echo "Quais Sintomas você está sentindo, $nomePaciente?"; ?></h2>
             <ul>
                 <?php 
@@ -116,23 +116,25 @@ if ($result && $result->num_rows > 0) {
                 }
                 ?>
             </ul>
-            <!-- Formulário para seleção de sintomas -->
-            <form method="post">
-                <label for="sintoma">Digite o número correspondente à sua escolha:</label>
-                <input type="text" id="sintoma" name="sintoma">
-                <button type="submit">Enviar</button>
-            </form>
-    
             <p>
             <?php 
                 // Verifica se $resposta está definida
                 if (isset($resposta)) {
-                    echo "Sintoma selecionado: $resposta";
+                    echo "Você está com: $resposta";
                 } else {
                     echo "Nenhum sintoma selecionado.";
                 }
                 ?>
             </p>        
+            <!-- Formulário para seleção de sintomas -->
+            <form method="post">
+                <label for="sintoma">Digite o número correspondente à sua escolha:</label>
+                <input type="text" id="sintoma" name="sintoma">
+                <button class="btn" type="submit">Enviar</button>
+            </form>
+            <button class="btn"><a href="site.php">Voltar</a></button>
+    
+            
         </div>
     </div>
 </body>
