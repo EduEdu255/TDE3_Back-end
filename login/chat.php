@@ -78,7 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Chama o método verificarSintomas() para verificar os sintomas
     $resposta = $sintomas->verificarSintomas($sintomaSelecionado);
 }
-$query = "SELECT nome FROM paciente ORDER BY id DESC LIMIT 1"; // Altere '1' para o ID do paciente desejado
+
+$query = "SELECT nome FROM paciente ORDER BY id DESC LIMIT 1";
 $result = $conn->query($query);
 
 // Verifica se a consulta foi bem-sucedida e se há pelo menos uma linha de resultado

@@ -1,7 +1,7 @@
 <?php
-    // if (session_status() != PHP_SESSION_ACTIVE) {
-    //     session_start();
-    // }
+    if (session_status() != PHP_SESSION_ACTIVE) {
+        session_start();
+    }
     require_once "config.php";
 
     // Verifica se a requisição é do tipo POST
@@ -39,29 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Todos os campos são obrigatórios.";
     }
 }
-
-    
-       //teste
-    //    $sql = "SELECT nome FROM users WHERE id = 1"; // Supondo que o nome está na tabela usuarios e você deseja o nome do usuário com ID 1
-
-    //    $resultado = $conn->query($sql);
-       
-    //    if ($resultado->num_rows > 0) {
-    //        // Obtém o resultado da consulta
-    //        $row = $resultado->fetch_assoc();
-    //        $nome = $row["nome"];
-       
-    //        // Retorna o nome como resposta
-    //        echo $nome;
-    //    } else {
-    //        echo "Nome não encontrado";
-    //    }
-       
-    //    // Fecha a conexão com o banco de dados
-    //    $conn->close();
-   
-       //teste acaba aqui
-
+ 
+    //LOGOUT = DESCONECTAR DA PAGINA
     function logout(){
         session_unset();
         session_destroy();
@@ -77,7 +56,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["logout"])){
         logout();
     }
-    include "site.html"; 
-    
 
- 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/stylesite.css">
+    <title>Web site</title>
+</head>
+<body>
+    <div class="center">
+        <img src="components/Big_Logo_MedGPT.svg" alt="">
+        <h1>Bem vindo!</h1>
+    
+        
+        <h2>Dados do paciente:</h2>
+        <form class="pct" method="POST" action="site.php">
+            <label class="inf">Nome do paciente</label>
+            <input type="text" name="nome" placeholder="Digite o nome do paciente" required>
+            
+            <label for="" class="inf">CPF do paciente</label>
+            <input type="text" name="cpf" placeholder="Digite o CPF do paciente" required>
+            
+            <label for="" class="inf">Data nascimento do paciente</label>
+            <input type="date" name="data" placeholder="Digite a data de nascimento" required>
+            
+            <input class="sbt" type="submit" value="enviar">
+        </form>
+        <form class="quit" method="POST" action="site.php">
+            <input type="submit" name="logout" value="Logout">
+        </form>
+    </div>
+</body>
+</html> 

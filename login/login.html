@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style/estilo.css">
     <title>login</title>
+    <link rel="stylesheet" href="Style/stylelogin.css">
 </head>
 <body>
-    <section>        
-        <form method="POST" action="index.php">
-            <img src="/login/components/MedGPT_Logo.svg" alt="">
-            email: <input type="text" name="email" required><br>
-            senha: <input type="password" name="password" required><br>
-            <div>
-                <a href="cadastro.php">Ainda não é cadastrado?</a>
-    
-            </div>
-    
-            <input type="submit" value="Logar">
-        </form>
-    </section>
+    <form method="POST" action="index.php">
+        <figure>
+            <img src="components/MedGPT_Logo.svg" alt="" class="logo">
+        </figure>
+            <label for="email" class="tag">Email:</label>
+            <input type="text" name="email" require placeholder="Digite seu email"><br>
+            <label for="password" class="tag">Senha:</label>
+            <input type="password" name="password" require placeholder="Digite sua senha"><br>
 
+        <p>Não tem uma conta? Aperte aqui para <br> <a href="cadastro.php">criar agora.</a></p>
+         <br>
+
+        <input type="submit" value="Entrar" class="botao1">
+    </form>
+
+    <br>
 </body>
 </html>

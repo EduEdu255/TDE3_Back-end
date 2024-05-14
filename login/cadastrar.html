@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="Style/stylecadastro.css">
     <title>Cadastrar</title>
 </head>
 <body>
-    <h1>cadastrar</h1>
-    <form method="post" action="cadastro.php">
+    <div class="clas">
 
-        Nome: <input type="text" name="name" required><br>
+        <img src="components/MedGPT_Logo.svg" alt="">
+        <form method="post" action="cadastro.php">
+         
+            <label class="label1" for="">Nome:</label>
 
-        E-mail: <input type="email" name="email" required><br>
+            <input type="text" name="name" required><br>
+            
+            <label class="label1" for="">E-mail:</label>
 
-        Senha: <input type="password" name="password" required><br>
+             <input type="email" name="email" required><br>
 
-        <input type="submit" value="Cadastrar">
-
-    </form>
-    <a href="index.php">Faça login</a>
+            <label class="label1" for="">Senha:</label>
+             
+             <input type="password" name="password" required><br>
+    
+            <input type="submit" value="Cadastrar">
+    
+        </form>
+        <a href="index.php">Faça login</a>
+    </div>
+    
 </body>
 </html>
