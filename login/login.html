@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="/login/Style/estilo.css">
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="POST" action="index.php">
-        email: <input type="text" name="email" required><br>
-        senha: <input type="password" name="password" required><br>
+    <section>
 
-        <input type="submit" value="Logar">
-    </form>
+        
+        <form method="POST" action="index.php">
+            <img src="/login/components/MedGPT_Logo.svg" alt="">
+            email: <input type="text" name="email" required><br>
+            senha: <input type="password" name="password" required><br>
+            <div>
+                <a href="cadastro.php">Ainda não é cadastrado?</a>
+    
+            </div>
+    
+            <input type="submit" value="Logar">
+        </form>
+    </section>
 
-    <br>
-    <a href="cadastro.php">Ainda não é cadastrado</a>
 </body>
 </html>
