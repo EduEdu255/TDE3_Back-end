@@ -5,7 +5,9 @@
     require_once "config.php";
 
     // Verifica se a requisição é do tipo POST
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Verifica se os campos obrigatórios não estão vazios
+    if (!empty($_POST["nome"]) && !empty($_POST["cpf"]) && !empty($_POST["data"])) {
         // Recupera os dados do formulário
         $nome = $_POST["nome"];
         $cpf = $_POST["cpf"];
@@ -27,12 +29,17 @@
             exit;
         } else {
             // Em caso de erro, exibe uma mensagem de erro
-            echo "Erro: " . $sql . "<br>" . $conn->error;
+            echo "Erro: " . $sql . "<br>" . $stmt->error;
         }
 
         // Fecha o statement
         $stmt->close();
+    } else {
+        // Exibe uma mensagem de erro se algum campo obrigatório estiver vazio
+        echo "Todos os campos são obrigatórios.";
     }
+}
+
     
        //teste
     //    $sql = "SELECT nome FROM users WHERE id = 1"; // Supondo que o nome está na tabela usuarios e você deseja o nome do usuário com ID 1

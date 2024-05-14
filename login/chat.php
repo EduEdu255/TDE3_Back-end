@@ -77,8 +77,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sintomaSelecionado = getInput("sintoma");
     // Chama o método verificarSintomas() para verificar os sintomas
     $resposta = $sintomas->verificarSintomas($sintomaSelecionado);
-    // Exibe a resposta na página
-    echo "Sintoma selecionado: $resposta";
+}
+$query = "SELECT nome FROM paciente ORDER BY id DESC LIMIT 1"; // Altere '1' para o ID do paciente desejado
+$result = $conn->query($query);
+
+// Verifica se a consulta foi bem-sucedida e se há pelo menos uma linha de resultado
+if ($result && $result->num_rows > 0) {
+    // Obtém o nome do paciente da linha de resultado
+    $row = $result->fetch_assoc();
+    $nomePaciente = $row['nome'];
+} else {
+    // Define um valor padrão se o nome do paciente não puder ser recuperado
+    $nomePaciente = "Paciente";
 }
 ?>
 
@@ -87,26 +97,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificação de Sintomas</title>
+    <link rel="stylesheet" href="Style/stylechat.css">
+    <title>Chat</title>
 </head>
 <body>
-    <h1>Verificação de Sintomas</h1>
-    <ul>
-        <?php 
-        // Obtém as perguntas do banco de dados
-        $perguntas = $sintomas->obterPerguntas();
-        
-        // Loop através das perguntas e exibe cada uma delas
-        foreach ($perguntas as $id => $pergunta) {
-            echo "<li>($id) $pergunta</li>";
-        }
-        ?>
-    </ul>
-    <!-- Formulário para seleção de sintomas -->
-    <form method="post">
-        <label for="sintoma">Digite o número correspondente à sua escolha:</label>
-        <input type="text" id="sintoma" name="sintoma">
-        <button type="submit">Enviar</button>
-    </form>
+    <div class="base">
+        <img src="components/Big_Logo_MedGPT.svg" alt="">
+        <div class="center">
+            <h2><?php echo "Quais Sintomas você está sentindo, $nomePaciente?"; ?></h2>
+            <ul>
+                <?php 
+                // Obtém as perguntas do banco de dados
+                $perguntas = $sintomas->obterPerguntas();
+                
+                // Loop através das perguntas e exibe cada uma delas
+                foreach ($perguntas as $id => $pergunta) {
+                    echo "<li>$id - $pergunta</li>";
+                }
+                ?>
+            </ul>
+            <!-- Formulário para seleção de sintomas -->
+            <form method="post">
+                <label for="sintoma">Digite o número correspondente à sua escolha:</label>
+                <input type="text" id="sintoma" name="sintoma">
+                <button type="submit">Enviar</button>
+            </form>
+    
+            <p>
+            <?php 
+                // Verifica se $resposta está definida
+                if (isset($resposta)) {
+                    echo "Sintoma selecionado: $resposta";
+                } else {
+                    echo "Nenhum sintoma selecionado.";
+                }
+                ?>
+            </p>        
+        </div>
+    </div>
 </body>
 </html>
